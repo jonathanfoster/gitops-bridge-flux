@@ -24,6 +24,10 @@ flux-bootstrap:
 		--path=clusters/local \
 		--personal
 
+.PHONY: flux-reconcile
+flux-reconcile:
+	flux reconcile source git flux-system
+
 .PHONY: install-toolchain
 install-toolchain:
 	brew install fluxcd/tap/flux
