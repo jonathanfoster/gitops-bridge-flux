@@ -23,3 +23,7 @@ spec:
         name: loki
       version: 6.x
   interval: 1m0s
+  values:
+    loki:
+      storage:
+        type: filesystem
