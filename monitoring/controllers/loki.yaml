@@ -28,11 +28,6 @@ spec:
     loki:
       commonConfig:
         replication_factor: 1
-      memcached:
-        chunk_cache:
-          enabled: false
-        results_cache:
-          enabled: false
       storage:
         type: "filesystem"
       schemaConfig:
@@ -52,3 +47,5 @@ spec:
       replicas: 0
     write:
       replicas: 0
+    chunksCache:
+      enabled: false
