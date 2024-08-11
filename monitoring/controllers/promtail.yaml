@@ -23,3 +23,8 @@ spec:
         name: promtail
       version: 6.x
   interval: 1m0s
+  values:
+    config:
+      clients:
+        - url: http://loki-gateway/loki/api/v1/push
+          tenant_id: 1
