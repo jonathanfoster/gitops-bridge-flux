@@ -51,5 +51,3 @@ spec:
       enabled: false
     resultsCache:
       enabled: false
-    gateway:
-      enabled: false
