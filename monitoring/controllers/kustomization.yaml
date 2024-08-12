@@ -5,4 +5,5 @@ resources:
   - grafana.yaml
   - loki.yaml
   - monitoring.yaml
+  - prometheus.yaml
   - promtail.yaml
