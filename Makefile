@@ -30,7 +30,7 @@ flux-reconcile:
 
 .PHONY: grafana-port-forward
 grafana-port-forward:
-	kubectl -n monitoring port-forward svc/grafana 3000:80
+	kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 3000:80
 
 .PHONY: grafana-password
 grafana-password:
