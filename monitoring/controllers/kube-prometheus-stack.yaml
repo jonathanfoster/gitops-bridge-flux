@@ -29,5 +29,6 @@ spec:
         - name: Loki
           access: proxy
           isDefault: false
+          orgId: 1
           type: loki
           url: http://loki-gateway.monitoring.svc.cluster.local/
