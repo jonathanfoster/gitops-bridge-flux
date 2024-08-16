@@ -23,3 +23,11 @@ spec:
         name: kube-prometheus-stack
       version: 61.x
   interval: 1m0s
+  values:
+    grafana:
+      additionalDataSources:
+        - name: Loki
+          access: proxy
+          isDefault: false
+          type: loki
+          url: http://loki-gateway.monitoring
