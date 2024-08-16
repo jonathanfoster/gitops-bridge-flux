@@ -8,7 +8,7 @@ all:
 
 .PHONY: cluster-create
 cluster-create:
-	kind create cluster --name=${CLUSTER_NAME}
+	kind create cluster --name=${CLUSTER_NAME} --config=hack/kind.yaml
 
 .PHONY: kind-create
 cluster-delete:
@@ -47,4 +47,4 @@ install-toolchain:
 
 .PHONY: lint
 lint:
-	./scripts/validate.sh
+	./hack/validate.sh
