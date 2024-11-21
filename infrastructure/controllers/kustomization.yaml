@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - cert-manager.yaml
   - flux-operator.yaml
+  - headlamp.yaml
   - ingress-nginx.yaml
   - metrics-server.yaml
