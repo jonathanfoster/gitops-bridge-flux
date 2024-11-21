@@ -18,13 +18,7 @@ cluster-delete: ## Delete local kind cluster
 
 .PHONY: flux-bootstrap
 flux-bootstrap: ## Bootstrap Flux
-	flux bootstrap github \
-		--token-auth \
-		--owner=jonathanfoster \
-		--repository=gitops-bridge-flux \
-		--branch=main \
-		--path=clusters/local \
-		--personal
+	helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator -n flux-system --create-namespace
 
 .PHONY: flux-reconcile
 flux-reconcile: ## Reconcile Flux source
