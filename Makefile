@@ -28,13 +28,6 @@ flux-bootstrap:
 flux-reconcile:
 	flux reconcile source git flux-system
 
-.PHONY: grafana-port-forward
-grafana-port-forward:
-	kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 3000:80
-
-.PHONY: grafana-password
-grafana-password:
-	kubectl -n monitoring get secret grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
 .PHONY: install-toolchain
 install-toolchain:
