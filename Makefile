@@ -35,6 +35,8 @@ install-toolchain: ## Install toolchain
 	brew install kind
 	brew install kubeconform
 	brew install kustomize
+	brew tap nats-io/nats-tools
+	brew install nats-io/nats-tools/nats
 	brew install yamllint
 	brew install yq
 
