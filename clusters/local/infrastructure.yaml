@@ -8,7 +8,7 @@ spec:
   dependsOn:
     - name: infra-controllers
   interval: 60m0s
-  path: ./infrastructure/configs
+  path: ./infrastructure/configs/base
   prune: true
   retryInterval: 2m0s
   sourceRef:
@@ -24,7 +24,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 60m0s
-  path: ./infrastructure/controllers
+  path: ./infrastructure/controllers/base
   prune: true
   retryInterval: 2m0s
   sourceRef:
