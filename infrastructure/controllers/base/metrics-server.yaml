@@ -17,12 +17,11 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      interval: 1m0s
       sourceRef:
         kind: HelmRepository
         name: metrics-server
       version: 3.x
-  interval: 1m0s
+  interval: 10m
   values:
     args:
       - --kubelet-insecure-tls

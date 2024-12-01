@@ -7,14 +7,12 @@ metadata:
 spec:
   dependsOn:
     - name: infra-controllers
-  interval: 60m0s
+  interval: 10m
   path: ./infrastructure/configs/base
   prune: true
-  retryInterval: 2m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
-  timeout: 3m0s
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -23,12 +21,10 @@ metadata:
   name: infra-controllers
   namespace: flux-system
 spec:
-  interval: 60m0s
+  interval: 10m
   path: ./infrastructure/controllers/base
   prune: true
-  retryInterval: 2m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
-  timeout: 3m0s
   wait: true
