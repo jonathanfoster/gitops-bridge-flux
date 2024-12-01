@@ -30,4 +30,4 @@ spec:
   values:
     config:
       websocket:
-        enabled: true
+        enabled: false
