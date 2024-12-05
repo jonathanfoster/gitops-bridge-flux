@@ -22,3 +22,32 @@ spec:
         name: grafana
       version: 8.x
   interval: 10m
+  values:
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Loki
+            uid: loki
+            type: loki
+            url: http://loki-gateway.monitoring.svc.cluster.local
+            isDefault: false
+          - name: Mimir
+            uid: prom
+            type: prometheus
+            url: http://mimir-nginx.monitoring.svc.cluster.local/prometheus
+            isDefault: true
+          - name: Tempo
+            uid: tempo
+            type: tempo
+            url: http://tempo-query-frontend.monitoring.svc.cluster.local:3100
+            isDefault: false
+            jsonData:
+              tracesToLogsV2:
+                datasourceUid: loki
+              lokiSearch:
+                datasourceUid: loki
+              tracesToMetrics:
+                datasourceUid: prom
+              serviceMap:
+                datasourceUid: prom
