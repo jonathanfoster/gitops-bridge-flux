@@ -5,4 +5,5 @@ resources:
   - grafana.yaml
   # - kube-prometheus-stack.yaml
   - loki.yaml
+  - mimir.yaml
   - namespace.yaml
