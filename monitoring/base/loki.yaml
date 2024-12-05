@@ -22,3 +22,5 @@ spec:
         name: loki
       version: 0.x
   interval: 10m
+  values:
+    fullnameOverride: loki
