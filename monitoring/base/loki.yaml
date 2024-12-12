@@ -16,11 +16,11 @@ metadata:
 spec:
   chart:
     spec:
-      chart: loki-distributed
+      chart: loki
       sourceRef:
         kind: HelmRepository
         name: loki
-      version: 0.x
+      version: 6.x
   interval: 10m
   values:
-    fullnameOverride: loki
+    deploymentMode: SingleBinary
