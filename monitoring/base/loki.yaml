@@ -24,3 +24,5 @@ spec:
   interval: 10m
   values:
     deploymentMode: SingleBinary
+    minio:
+      enabled: false
