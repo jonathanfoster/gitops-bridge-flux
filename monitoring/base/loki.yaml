@@ -42,6 +42,8 @@ spec:
         volume_enabled: true
       ruler:
         enable_api: true
+    resultsCache:
+      enabled: false
     chunksCache:
       enabled: false
     minio:
