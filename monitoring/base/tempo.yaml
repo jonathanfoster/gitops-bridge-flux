@@ -16,7 +16,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: tempo-distributed
+      chart: tempo
       sourceRef:
         kind: HelmRepository
         name: tempo
