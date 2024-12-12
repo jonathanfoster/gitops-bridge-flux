@@ -42,6 +42,8 @@ spec:
         volume_enabled: true
       ruler:
         enable_api: true
+    chunksCache:
+      enabled: false
     minio:
       enabled: true
     deploymentMode: SingleBinary
