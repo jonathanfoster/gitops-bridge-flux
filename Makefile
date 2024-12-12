@@ -23,6 +23,10 @@ flux-bootstrap: ## Bootstrap Flux
 .PHONY: flux-reconcile
 flux-reconcile: ## Reconcile Flux source
 	flux reconcile source git flux-system
+	flux reconcile kustomization infra-controllers
+	flux reconcile kustomization infra-configs
+	flux reconcile kustomization monitoring
+	flux reconcile kustomization apps-nats
 
 .PHONY: help
 help: ## Display this help
