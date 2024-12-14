@@ -41,6 +41,7 @@ spec:
         enabled: true
       querier:
         max_concurrent: 2
+      auth_enabled: false
     resultsCache:
       enabled: false
     chunksCache:
