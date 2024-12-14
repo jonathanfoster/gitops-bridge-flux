@@ -71,3 +71,5 @@ spec:
       replicas: 0
     gateway:
       enabled: false
+    test:
+      enabled: false
