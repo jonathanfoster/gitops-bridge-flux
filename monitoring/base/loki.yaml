@@ -35,8 +35,6 @@ spec:
             index:
               prefix: loki_index_
               period: 24h
-      querier:
-        max_concurrent: 2
       auth_enabled: false
     resultsCache:
       enabled: false
@@ -71,7 +69,5 @@ spec:
       replicas: 0
     bloomGateway:
       replicas: 0
-    test:
-      enabled: false
-    lokiCanary:
+    gateway:
       enabled: false
