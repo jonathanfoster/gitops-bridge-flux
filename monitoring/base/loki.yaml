@@ -1,13 +1,4 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: loki
-  namespace: monitoring
-spec:
-  interval: 24h
-  url: https://grafana.github.io/helm-charts
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -19,7 +10,7 @@ spec:
       chart: loki
       sourceRef:
         kind: HelmRepository
-        name: loki
+        name: grafana
       version: 6.x
   interval: 10m
   values:
