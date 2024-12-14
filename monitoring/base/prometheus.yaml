@@ -22,3 +22,6 @@ spec:
         name: kube-prometheus-stack
       version: 66.x
   interval: 10m
+  values:
+    grafana:
+      adminPassword: ''
