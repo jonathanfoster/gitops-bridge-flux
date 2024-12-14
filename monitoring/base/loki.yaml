@@ -42,13 +42,15 @@ spec:
       enabled: false
     minio:
       enabled: true
-    deploymentMode: SimpleScalable
+    deploymentMode: SingleBinary
+    singleBinary:
+      replicas: 1
     backend:
-      replicas: 1
+      replicas: 0
     read:
-      replicas: 1
+      replicas: 0
     write:
-      replicas: 1
+      replicas: 0
     gateway:
       enabled: false
     test:
