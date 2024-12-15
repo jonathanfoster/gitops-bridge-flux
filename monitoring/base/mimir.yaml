@@ -13,3 +13,15 @@ spec:
         name: grafana
       version: 5.x
   interval: 10m
+  values:
+    ingester:
+      replicas: 1
+      zoneAwareReplication:
+        enabled: false
+    querier:
+      replicas: 1
+    query_scheduler:
+      replicas: 1
+    store_gateway:
+      zoneAwareReplication:
+        enabled: false
