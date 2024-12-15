@@ -19,7 +19,7 @@ spec:
         content: |-
           loki.write "default" {
             endpoint {
-              url = "http://loki.monitoring:3100/loki/api/v1/push"
+              url = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
             }
           }
 
@@ -92,4 +92,15 @@ spec:
             }
 
             forward_to = [loki.write.default.receiver]
+          }
+
+          prometheus.remote_write "default" {
+            endpoint {
+              url = "http://mimir-nginx.monitoring.svc.cluster.local/api/v1/push"
+            }
+          }
+
+          prometheus.scrape "default" {
+            targets = discovery.kubernetes.pod.targets
+            forward_to = [prometheus.remote_write.default.receiver]
           }
