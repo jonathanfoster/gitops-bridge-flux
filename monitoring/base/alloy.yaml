@@ -37,6 +37,12 @@ spec:
             }
 
             rule {
+              source_labels = ["__meta_kubernetes_pod_ip"]
+              action = "replace"
+              target_label = "pod_ip"
+            }
+
+            rule {
               source_labels = ["__meta_kubernetes_pod_container_name"]
               action = "replace"
               target_label = "container"
@@ -70,6 +76,18 @@ spec:
               target_label = "container_runtime"
               regex = "^(\\S+):\\/\\/.+$"
               replacement = "$1"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_node_name"]
+              action = "replace"
+              target_label = "node"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_host_ip"]
+              action = "replace"
+              target_label = "node_ip"
             }
           }
 
