@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - alloy.yaml
   - loki.yaml
+  - mimir.yaml
   - namespace.yaml
   - prometheus.yaml
   - repository.yaml
