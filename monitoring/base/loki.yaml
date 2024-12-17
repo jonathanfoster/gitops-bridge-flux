@@ -27,23 +27,27 @@ spec:
               prefix: loki_index_
               period: 24h
       auth_enabled: false
+    gateway:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/component: gateway
+                  app.kubernetes.io/name: loki
+              topologyKey: kubernetes.io/hostname
+    write:
+      replicas: 1
+    read:
+      replicas: 1
+    backend:
+      replicas: 1
     resultsCache:
       enabled: false
     chunksCache:
       enabled: false
     minio:
       enabled: true
-    deploymentMode: SingleBinary
-    singleBinary:
-      replicas: 1
-    backend:
-      replicas: 0
-    read:
-      replicas: 0
-    write:
-      replicas: 0
-    gateway:
-      enabled: false
     test:
       enabled: false
     lokiCanary:
