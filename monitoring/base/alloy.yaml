@@ -45,6 +45,12 @@ spec:
             }
 
             rule {
+              source_labels = ["__meta_kubernetes_pod_host_ip"]
+              action = "replace"
+              target_label = "host_ip"
+            }
+
+            rule {
               source_labels = ["__meta_kubernetes_namespace"]
               action = "replace"
               target_label = "namespace"
@@ -54,12 +60,6 @@ spec:
               source_labels = ["__meta_kubernetes_pod_node_name"]
               action = "replace"
               target_label = "node"
-            }
-
-            rule {
-              source_labels = ["__meta_kubernetes_pod_host_ip"]
-              action = "replace"
-              target_label = "node_ip"
             }
 
             rule {
