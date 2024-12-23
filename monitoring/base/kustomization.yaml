@@ -6,6 +6,5 @@ resources:
   - loki.yaml
   - mimir.yaml
   - namespace.yaml
-  - prometheus.yaml
   - repository.yaml
   - tempo.yaml
