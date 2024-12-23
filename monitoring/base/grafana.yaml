@@ -15,4 +15,4 @@ spec:
   interval: 10m
   values:
     persistence:
-      enabled: false
+      enabled: true
