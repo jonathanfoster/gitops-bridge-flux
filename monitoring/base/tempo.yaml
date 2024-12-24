@@ -14,7 +14,9 @@ spec:
       version: 1.x
   interval: 10m
   values:
-    minio:
-      enabled: true
-    gateway:
-      enabled: true
+    traces:
+      otlp:
+        grpc:
+          enabled: true
+        http:
+          enabled: true
