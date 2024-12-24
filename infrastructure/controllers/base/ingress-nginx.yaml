@@ -27,7 +27,3 @@ spec:
         name: ingress-nginx
       version: 4.x
   interval: 10m
-  values:
-    controller:
-      service:
-        type: ClusterIP

@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - ../base
 patches:
-  - path: metrics-server-values.yaml
+  - path: ingress-nginx-patch.yaml
+  - path: metrics-server-patch.yaml
