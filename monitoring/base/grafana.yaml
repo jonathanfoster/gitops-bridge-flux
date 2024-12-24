@@ -14,18 +14,20 @@ spec:
       version: 8.x
   interval: 10m
   values:
-    persistence:
-      enabled: true
     datasources:
       datasources.yaml:
         apiVersion: 1
         datasources:
           - name: Loki
+            uid: loki
+            editable: false
             type: loki
             url: http://loki-gateway.monitoring.svc.cluster.local
-            editable: false
           - name: Mimir
+            uid: mimir
+            editable: false
+            isDefault: true
             type: prometheus
             url: http://mimir-gateway.monitoring.svc.cluster.local/prometheus
-            isDefault: true
-            editable: false
+    persistence:
+      enabled: true
