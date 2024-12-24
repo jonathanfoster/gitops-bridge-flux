@@ -11,5 +11,11 @@ make install-toolchain
 ### 2. Create Local Cluster
 
 ```bash
-make cluster-create
+make kind-cluster-create
+```
+
+### 3. Bootstrap Flux
+
+```bash
+make flux-bootstrap-local
 ```

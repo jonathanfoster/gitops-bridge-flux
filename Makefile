@@ -20,6 +20,10 @@ cluster-delete: ## Delete local kind cluster
 flux-bootstrap: ## Bootstrap Flux
 	helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator -n flux-system --create-namespace
 
+.PHONY: flux-bootstrap-local
+flux-bootstrap-local: flux-bootstrap ## Bootstrap Flux local cluster
+	kubectl apply -f cluster/flux-system/flux.yaml
+
 .PHONY: flux-reconcile
 flux-reconcile: ## Reconcile Flux source
 	flux reconcile source git flux-system
