@@ -44,6 +44,14 @@ install-toolchain: ## Install toolchain
 	brew install yamllint
 	brew install yq
 
+.PHONY: kind-create-cluster
+kind-create-cluster: ## Create kind cluster
+	kind create cluster --name=${CLUSTER_NAME} --config=hack/kind.yaml
+
+.PHONY: kind-delete-cluster
+kind-delete-cluster: ## Delete kind cluster
+	kind delete cluster --name=${CLUSTER_NAME}
+
 .PHONY: lint
 lint: lint-kustomize lint-yaml ## Lint all files
 
