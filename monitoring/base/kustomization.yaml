@@ -6,7 +6,6 @@ resources:
   - grafana.yaml
   - loki.yaml
   - mimir.yaml
-  - minio.yaml
   - namespace.yaml
   - repository.yaml
   - tempo.yaml
