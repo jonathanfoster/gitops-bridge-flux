@@ -24,8 +24,16 @@ flux-bootstrap: ## Bootstrap Flux
 flux-bootstrap-local: flux-bootstrap ## Bootstrap Flux local cluster
 	kubectl apply -f cluster/flux-system/flux.yaml
 
+.PHONY: flux-get-all
+flux-get-all: ## Get all Flux resources
+	flux get all -A
+
+.PHONY: flux-get-all-failed
+flux-get-all-failed: ## Get all failed Flux resources
+	flux get all -A --status-selector=ready=false
+
 .PHONY: flux-reconcile
-flux-reconcile: ## Reconcile Flux source
+flux-reconcile: ## Reconcile all Flux resources
 	flux reconcile source git flux-system
 	flux reconcile kustomization infra-controllers
 	flux reconcile kustomization infra-configs
