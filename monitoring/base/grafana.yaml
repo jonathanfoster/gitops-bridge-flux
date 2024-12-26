@@ -31,5 +31,20 @@ spec:
             isDefault: true
             type: prometheus
             url: http://mimir-gateway.monitoring.svc.cluster.local/prometheus
+          - name: Tempo
+            uid: tempo
+            editable: false
+            isDefault: false
+            jsonData:
+              tracesToLogsV2:
+                datasourceUid: loki
+              lokiSearch:
+                datasourceUid: loki
+              tracesToMetrics:
+                datasourceUid: mimir
+              serviceMap:
+                datasourceUid: mimir
+            type: tempo
+            url: http://tempo-gateway.monitoring.svc.cluster.local/api
     persistence:
       enabled: true
