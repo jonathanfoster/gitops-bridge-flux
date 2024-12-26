@@ -7,10 +7,12 @@ metadata:
 spec:
   dependsOn:
     - name: infra-configs
-  interval: 10m
+  interval: 60m
   path: ./apps/nats/base
   prune: true
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
+  timeout: 3m
   wait: true
