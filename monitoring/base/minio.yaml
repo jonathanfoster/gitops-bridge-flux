@@ -42,6 +42,9 @@ spec:
       - name: mimir-ruler
         policy: none
         purge: false
+      - name: tempo-trace
+        policy: none
+        purge: false
     drivesPerNode: 2
     persistence:
       size: 10Gi
@@ -55,4 +58,7 @@ spec:
         policy: readwrite
       - accessKey: mimir
         secretKey: mimir123!
+        policy: readwrite
+      - accessKey: tempo
+        secretKey: tempo123!
         policy: readwrite
