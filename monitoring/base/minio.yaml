@@ -24,13 +24,22 @@ spec:
   interval: 10m
   values:
     buckets:
+      - name: loki-admin
+        policy: none
+        purge: false
       - name: loki-chunks
         policy: none
         purge: false
       - name: loki-ruler
         policy: none
         purge: false
-      - name: loki-admin
+      - name: mimir-alertmanager
+        policy: none
+        purge: false
+      - name: mimir-blocks
+        policy: none
+        purge: false
+      - name: mimir-ruler
         policy: none
         purge: false
     drivesPerNode: 2
@@ -43,4 +52,7 @@ spec:
     users:
       - accessKey: loki
         secretKey: loki123!
+        policy: readwrite
+      - accessKey: mimir
+        secretKey: mimir123!
         policy: readwrite
