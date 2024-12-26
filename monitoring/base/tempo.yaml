@@ -12,8 +12,27 @@ spec:
         kind: HelmRepository
         name: grafana
       version: 1.x
+  dependsOn:
+    - name: minio
   interval: 10m
   values:
+    # Distributed configuration
+    ingester:
+      replicas: 1
+    # Gateway configuration
+    gateway:
+      enabled: true
+    # Storage configuration
+    storage:
+      trace:
+        backend: s3
+        s3:
+          access_key: tempo
+          secret_key: tempo123!
+          bucket: tempo-trace
+          endpoint: minio.monitoring.svc.cluster.local:9000
+          insecure: true
+    # Traces configuration
     traces:
       otlp:
         grpc:
