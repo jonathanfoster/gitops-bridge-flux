@@ -6,4 +6,5 @@ resources:
   - loki.yaml
   - mimir.yaml
   - minio.yaml
+  - opentelemetry.yaml
   - tempo.yaml
