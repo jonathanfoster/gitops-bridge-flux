@@ -21,4 +21,6 @@ spec:
         kind: HelmRepository
         name: metrics-server
       version: 3.x
+  driftDetection:
+    mode: enabled
   interval: 10m

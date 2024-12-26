@@ -21,6 +21,8 @@ spec:
         kind: HelmRepository
         name: minio
       version: 5.x
+  driftDetection:
+    mode: enabled
   interval: 10m
   values:
     buckets:

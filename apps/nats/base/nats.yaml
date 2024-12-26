@@ -26,6 +26,8 @@ spec:
         kind: HelmRepository
         name: nats
       version: 1.x
+  driftDetection:
+    mode: enabled
   interval: 10m
   values:
     config:
