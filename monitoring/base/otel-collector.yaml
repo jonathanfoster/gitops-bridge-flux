@@ -7,23 +7,6 @@ metadata:
 spec:
   interval: 24h
   url: https://open-telemetry.github.io/opentelemetry-helm-charts
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2
-# kind: HelmRelease
-# metadata:
-#   name: opentelemetry-kube-stack
-#   namespace: monitoring
-# spec:
-#   chart:
-#     spec:
-#       chart: opentelemetry-kube-stack
-#       sourceRef:
-#         kind: HelmRepository
-#         name: opentelemetry
-#       version: 0.x
-#   driftDetection:
-#     mode: enabled
-#   interval: 10m
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -42,10 +25,32 @@ spec:
     mode: enabled
   interval: 10m
   values:
+    config:
+      receivers:
+        jaeger: null
+        prometheus: null
+        zipkin: null
+      service:
+        pipelines:
+          metrics:
+            receivers:
+              - otlp
+          traces:
+            receivers:
+              - otlp
     fullnameOverride: otel-collector-daemon
     image:
       repository: otel/opentelemetry-collector-k8s
     mode: daemonset
+    ports:
+      jaeger-compact:
+        enabled: false
+      jaeger-thrift:
+        enabled: false
+      jaeger-grpc:
+        enabled: false
+      zipkin:
+        enabled: false
     presets:
       hostMetrics:
         enabled: true
@@ -55,7 +60,6 @@ spec:
         enabled: false
       logsCollection:
         enabled: true
-        includeCollectorLogs: true
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -74,10 +78,32 @@ spec:
     mode: enabled
   interval: 10m
   values:
+    config:
+      receivers:
+        jaeger: null
+        prometheus: null
+        zipkin: null
+      service:
+        pipelines:
+          metrics:
+            receivers:
+              - otlp
+          traces:
+            receivers:
+              - otlp
     fullnameOverride: otel-collector-cluster
     image:
       repository: otel/opentelemetry-collector-k8s
     mode: deployment
+    ports:
+      jaeger-compact:
+        enabled: false
+      jaeger-thrift:
+        enabled: false
+      jaeger-grpc:
+        enabled: false
+      zipkin:
+        enabled: false
     presets:
       clusterMetrics:
         enabled: true
