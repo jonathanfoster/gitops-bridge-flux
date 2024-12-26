@@ -45,10 +45,10 @@ spec:
       - name: tempo-trace
         policy: none
         purge: false
-    drivesPerNode: 2
+    drivesPerNode: 1
     persistence:
       size: 10Gi
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: 128Mi

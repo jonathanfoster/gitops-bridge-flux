@@ -17,20 +17,36 @@ spec:
   interval: 10m
   values:
     # Distributed configuration
-    ingester:
-      replicas: 1
+    alertmanager:
+      replicas: 2
       zoneAwareReplication:
         enabled: false
+    compactor:
+      replicas: 2
+    distributor:
+      replicas: 2
+    ingester:
+      replicas: 2
+      zoneAwareReplication:
+        enabled: false
+    overrides_exporter:
+      replicas: 2
+    ruler:
+      replicas: 2
     ruler_querier:
-      replicas: 1
+      replicas: 2
+    ruler_query_frontend:
+      replicas: 2
     ruler_query_scheduler:
-      replicas: 1
+      replicas: 2
     querier:
-      replicas: 1
+      replicas: 2
+    query_frontend:
+      replicas: 2
     query_scheduler:
-      replicas: 1
+      replicas: 2
     store_gateway:
-      replicas: 1
+      replicas: 2
       zoneAwareReplication:
         enabled: false
     # Extra configuration
@@ -41,6 +57,7 @@ spec:
     # Gateway configuration
     gateway:
       enabledNonEnterprise: true
+      replicas: 2
     nginx:
       enabled: false
     # Mimir configuration

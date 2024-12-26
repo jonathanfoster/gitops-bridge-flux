@@ -33,6 +33,7 @@ spec:
                   app.kubernetes.io/component: gateway
                   app.kubernetes.io/name: loki
               topologyKey: kubernetes.io/hostname
+      replicas: 2
     # Loki configuration
     loki:
       auth_enabled: false
@@ -59,11 +60,11 @@ spec:
           s3ForcePathStyle: true
     # Simple scalable configuration
     backend:
-      replicas: 1
+      replicas: 2
     read:
-      replicas: 1
+      replicas: 2
     write:
-      replicas: 1
+      replicas: 2
     # Testing configuration
     lokiCanary:
       enabled: false

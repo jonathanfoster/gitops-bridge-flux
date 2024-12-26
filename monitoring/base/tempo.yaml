@@ -17,11 +17,20 @@ spec:
   interval: 10m
   values:
     # Distributed configuration
+    compactor:
+      replicas: 2
+    distributor:
+      replicas: 2
     ingester:
-      replicas: 1
+      replicas: 2
+    querier:
+      replicas: 2
+    queryFrontend:
+      replicas: 2
     # Gateway configuration
     gateway:
       enabled: true
+      replicas: 2
     # Storage configuration
     storage:
       trace:
