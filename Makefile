@@ -1,44 +1,38 @@
 SHELL = /usr/bin/env bash -o pipefail
 .SHELLFLAGS = -ec
 
-CLUSTER_NAME = gitops-bridge-flux
+FLUX_CLUSTER_PATH ?= clusters/local
+KIND_CLUSTER_NAME ?= gitops-bridge-flux
 
 .PHONY: all
 all: help
 
 ##@ Available Commands:
 
-.PHONY: cluster-create
-cluster-create: ## Create local kind cluster
-	kind create cluster --name=${CLUSTER_NAME} --config=hack/kind.yaml
-
-.PHONY: kind-create
-cluster-delete: ## Delete local kind cluster
-	kind delete cluster --name=${CLUSTER_NAME}
-
 .PHONY: flux-bootstrap
-flux-bootstrap: ## Bootstrap Flux
+flux-bootstrap: flux-install-operator flux-create-flux-instance ## Bootstrap Flux
+
+.PHONY: flux-install-operator
+flux-install-operator: ## Install Flux operator
 	helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator -n flux-system --create-namespace
 
-.PHONY: flux-bootstrap-local
-flux-bootstrap-local: flux-bootstrap ## Bootstrap Flux local cluster
-	kubectl apply -f cluster/flux-system/flux.yaml
+.PHONY: flux-create-instance
+flux-create-instance: ## Create Flux instance
+	kubectl apply -f ${FLUX_CLUSTER_PATH}/flux-system/flux.yaml
 
 .PHONY: flux-get-all
 flux-get-all: ## Get all Flux resources
 	flux get all -A
 
-.PHONY: flux-get-all-failed
-flux-get-all-failed: ## Get all failed Flux resources
+.PHONY: flux-get-failed
+flux-get-failed: ## Get failed Flux resources
 	flux get all -A --status-selector=ready=false
 
 .PHONY: flux-reconcile
 flux-reconcile: ## Reconcile all Flux resources
 	flux reconcile source git flux-system
-	flux reconcile kustomization infra-controllers
-	flux reconcile kustomization infra-configs
-	flux reconcile kustomization monitoring
-	flux reconcile kustomization apps-nats
+	flux suspend kustomization --all
+	flux resume kustomization --all
 
 .PHONY: help
 help: ## Display this help
@@ -58,11 +52,11 @@ install-toolchain: ## Install toolchain
 
 .PHONY: kind-create-cluster
 kind-create-cluster: ## Create kind cluster
-	kind create cluster --name=${CLUSTER_NAME} --config=hack/kind.yaml
+	kind create cluster --config=hack/kind.yaml --name=${KIND_CLUSTER_NAME}
 
 .PHONY: kind-delete-cluster
 kind-delete-cluster: ## Delete kind cluster
-	kind delete cluster --name=${CLUSTER_NAME}
+	kind delete cluster --name=${KIND_CLUSTER_NAME}
 
 .PHONY: lint
 lint: lint-kustomize lint-yaml ## Lint all files
