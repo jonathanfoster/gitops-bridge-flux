@@ -62,3 +62,4 @@ spec:
             url: http://tempo-gateway.monitoring.svc.cluster.local/api
     persistence:
       enabled: true
+    replicas: 2
