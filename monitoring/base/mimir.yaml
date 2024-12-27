@@ -82,3 +82,5 @@ spec:
         ruler_storage:
           s3:
             bucket_name: mimir-ruler
+        memberlist:
+          cluster_label: mimir
