@@ -25,6 +25,9 @@ spec:
       replicas: 2
     ingester:
       replicas: 2
+    metricsGenerator:
+      enabled: true
+      replicas: 2
     querier:
       replicas: 2
     queryFrontend:
