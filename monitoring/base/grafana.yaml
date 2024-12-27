@@ -62,4 +62,6 @@ spec:
             url: http://tempo-gateway.monitoring.svc.cluster.local
     persistence:
       enabled: true
+    plugins:
+      - grafana-exploretraces-app
     replicas: 2
