@@ -11,12 +11,12 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: otel-collector-daemon
+  name: otel-collector
   namespace: monitoring
 spec:
   chart:
     spec:
-      chart: opentelemetry-collector
+      chart: opentelemetry-kube-stack
       sourceRef:
         kind: HelmRepository
         name: opentelemetry
@@ -25,83 +25,29 @@ spec:
     mode: enabled
   interval: 10m
   values:
-    config:
-      exporters:
-        otlphttp/logs:
-          endpoint: http://loki-gateway.monitoring.svc.cluster.local/otlp
-          tls:
-            insecure: true
-        prometheusremotewrite:
-          endpoint: http://mimir-gateway.monitoring.svc.cluster.local/api/v1/push
-          tls:
-            insecure: true
-      receivers:
-        kubeletstats:
-          insecure_skip_verify: true
-      service:
-        pipelines:
-          logs:
-            exporters:
-              - otlphttp/logs
-          metrics:
-            exporters:
-              - prometheusremotewrite
-    fullnameOverride: otel-collector-daemon
-    image:
-      repository: otel/opentelemetry-collector-contrib
-    mode: daemonset
-    presets:
-      hostMetrics:
-        enabled: true
-      kubeletMetrics:
-        enabled: true
-      kubernetesAttributes:
-        enabled: true
-        extractAllPodLabels: true
-      logsCollection:
-        enabled: true
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: otel-collector-cluster
-  namespace: monitoring
-spec:
-  chart:
-    spec:
-      chart: opentelemetry-collector
-      sourceRef:
-        kind: HelmRepository
-        name: opentelemetry
-      version: 0.x
-  driftDetection:
-    mode: enabled
-  interval: 10m
-  values:
-    config:
-      exporters:
-        otlphttp/logs:
-          endpoint: http://loki-gateway.monitoring.svc.cluster.local/otlp
-          tls:
-            insecure: true
-        prometheusremotewrite:
-          endpoint: http://mimir-gateway.monitoring.svc.cluster.local/api/v1/push
-          tls:
-            insecure: true
-      service:
-        pipelines:
-          logs:
-            exporters:
-              - otlphttp/logs
-          metrics:
-            exporters:
-              - prometheusremotewrite
-    fullnameOverride: otel-collector-cluster
-    image:
-      repository: otel/opentelemetry-collector-contrib
-    mode: deployment
-    presets:
-      clusterMetrics:
-        enabled: true
-      kubernetesEvents:
-        enabled: false
+    defaultCRConfig:
+      config:
+        exporters:
+          otlphttp/logs:
+            endpoint: http://loki-gateway.monitoring.svc.cluster.local/otlp
+            tls:
+              insecure: true
+          prometheusremotewrite:
+            endpoint: http://mimir-gateway.monitoring.svc.cluster.local/api/v1/push
+            tls:
+              insecure: true
+        service:
+          pipelines:
+            logs:
+              exporters:
+                - otlphttp/logs
+            metrics:
+              exporters:
+                - prometheusremotewrite
+      presets:
+        kubernetesAttributes:
+          extractAllPodLabels: true
+    opentelemetry-operator:
+      manager:
+        collectorImage:
+          repository: otel/opentelemetry-collector-contrib
