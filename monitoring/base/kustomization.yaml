@@ -8,4 +8,5 @@ resources:
   - mimir.yaml
   - minio.yaml
   - otel-collector.yaml
+  - prometheus-node-exporter.yaml
   - tempo.yaml
