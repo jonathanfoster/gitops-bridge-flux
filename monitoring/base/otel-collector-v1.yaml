@@ -36,8 +36,10 @@ spec:
           tls:
             insecure: true
       receivers:
+        jaeger: null
         kubeletstats:
           insecure_skip_verify: true
+        zipkin: null
       service:
         pipelines:
           logs:
@@ -50,6 +52,15 @@ spec:
     image:
       repository: otel/opentelemetry-collector-contrib
     mode: daemonset
+    ports:
+      jaeger-compact:
+        enabled: false
+      jaeger-grpc:
+        enabled: false
+      jaeger-thrift:
+        enabled: false
+      zipkin:
+        enabled: false
     presets:
       hostMetrics:
         enabled: true
@@ -88,6 +99,11 @@ spec:
           endpoint: http://mimir-gateway.monitoring.svc.cluster.local/api/v1/push
           tls:
             insecure: true
+      receivers:
+        jaeger: null
+        kubeletstats:
+          insecure_skip_verify: true
+        zipkin: null
       service:
         pipelines:
           logs:
@@ -100,6 +116,15 @@ spec:
     image:
       repository: otel/opentelemetry-collector-contrib
     mode: deployment
+    ports:
+      jaeger-compact:
+        enabled: false
+      jaeger-grpc:
+        enabled: false
+      jaeger-thrift:
+        enabled: false
+      zipkin:
+        enabled: false
     presets:
       clusterMetrics:
         enabled: true
