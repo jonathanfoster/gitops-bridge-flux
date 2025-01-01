@@ -48,6 +48,9 @@ spec:
           metrics:
             exporters:
               - prometheusremotewrite
+          traces:
+            receivers:
+              - otlp
     fullnameOverride: otel-collector-daemon
     image:
       repository: otel/opentelemetry-collector-contrib
@@ -112,6 +115,9 @@ spec:
           metrics:
             exporters:
               - prometheusremotewrite
+          traces:
+            receivers:
+              - otlp
     fullnameOverride: otel-collector-cluster
     image:
       repository: otel/opentelemetry-collector-contrib
