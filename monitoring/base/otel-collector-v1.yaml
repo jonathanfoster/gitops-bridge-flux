@@ -136,3 +136,4 @@ spec:
         enabled: true
       kubernetesEvents:
         enabled: false
+        enabled: true
