@@ -51,3 +51,5 @@ spec:
       manager:
         collectorImage:
           repository: otel/opentelemetry-collector-contrib
+    nodeExporter:
+      enabled: true
