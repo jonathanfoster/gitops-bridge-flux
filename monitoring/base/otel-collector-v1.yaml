@@ -134,6 +134,8 @@ spec:
     presets:
       clusterMetrics:
         enabled: true
+      kubernetesAttributes:
+        enabled: true
+        extractAllPodLabels: true
       kubernetesEvents:
-        enabled: false
         enabled: true
