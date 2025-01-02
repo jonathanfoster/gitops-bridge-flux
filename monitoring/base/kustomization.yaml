@@ -6,5 +6,4 @@ resources:
   - loki.yaml
   - mimir.yaml
   - minio.yaml
-  - otel-collector-v1.yaml
   - tempo.yaml
