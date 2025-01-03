@@ -12,14 +12,14 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: cert-manager
-  namespace: infrastructure
+  namespace: kube-system
 spec:
   chart:
     spec:
       chart: cert-manager
       sourceRef:
         kind: HelmRepository
-        name: infrastructure
+        name: cert-manager
       version: v1.x
   driftDetection:
     mode: enabled
