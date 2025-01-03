@@ -29,6 +29,14 @@ spec:
       datasources.yaml:
         apiVersion: 1
         datasources:
+          - name: Alertmanager
+            uid: alertmanager
+            editable: false
+            isDefault: false
+            jsonData:
+              implementation: mimir
+            type: alertmanager
+            url: http://mimir-gateway.monitoring.svc.cluster.local
           - name: Loki
             uid: loki
             editable: false
