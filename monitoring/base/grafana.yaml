@@ -59,4 +59,3 @@ spec:
       enabled: true
     plugins:
       - grafana-exploretraces-app
-    replicas: 2
