@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-configs
+  name: infrastructure-configs
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-controllers
+    - name: infrastructure-controllers
   interval: 60m
   path: ./infrastructure/configs/base
   postBuild:
@@ -24,7 +24,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-controllers
+  name: infrastructure-controllers
   namespace: flux-system
 spec:
   interval: 60m
