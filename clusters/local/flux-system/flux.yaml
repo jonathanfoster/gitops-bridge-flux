@@ -21,6 +21,7 @@ spec:
             path: /spec/template/spec/containers/0/args/-
             value: --requeue-dependency=5s
   sync:
+    interval: 30s
     kind: GitRepository
     path: clusters/local
     ref: refs/heads/main
