@@ -6,3 +6,4 @@ metadata:
 data:
   CLUSTER_NAME: local
   INGRESS_NGINX_CONTROLLER_SERVICE_TYPE: ClusterIP
+  METRICS_SERVER_ARGS: --kubelet-insecure-tls

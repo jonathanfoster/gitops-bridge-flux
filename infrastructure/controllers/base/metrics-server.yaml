@@ -25,3 +25,6 @@ spec:
     mode: enabled
   interval: 10m
   timeout: 3m
+  values:
+    args:
+      - ${METRICS_SERVER_ARGS}
