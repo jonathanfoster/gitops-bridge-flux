@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-configs
+    - name: infrastructure-configs
   interval: 60m
   path: ./monitoring/base
   postBuild:
