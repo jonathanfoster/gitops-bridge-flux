@@ -42,10 +42,15 @@ spec:
             editable: false
             type: loki
             url: http://loki-gateway.monitoring.svc.cluster.local
-          - name: Mimir
-            uid: mimir
+          - name: Prometheus
+            uid: prometheus
             editable: false
             isDefault: true
+            jsonData:
+              prometheusType: Mimir
+              exemplarTraceIdDestinations:
+                - name: traceID
+                  datasourceUid: tempo
             type: prometheus
             url: http://mimir-gateway.monitoring.svc.cluster.local/prometheus
           - name: Tempo
@@ -58,9 +63,9 @@ spec:
               lokiSearch:
                 datasourceUid: loki
               tracesToMetrics:
-                datasourceUid: mimir
+                datasourceUid: prometheus
               serviceMap:
-                datasourceUid: mimir
+                datasourceUid: prometheus
             type: tempo
             url: http://tempo-gateway.monitoring.svc.cluster.local
     persistence:
