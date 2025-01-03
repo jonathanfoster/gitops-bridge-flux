@@ -9,6 +9,10 @@ spec:
     - name: infra-configs
   interval: 60m
   path: ./apps/nats/base
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-vars
   prune: true
   retryInterval: 2m
   sourceRef:

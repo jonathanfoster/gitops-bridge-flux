@@ -9,6 +9,10 @@ spec:
     - name: infra-controllers
   interval: 60m
   path: ./infrastructure/configs/base
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-vars
   prune: true
   retryInterval: 2m
   sourceRef:
@@ -24,7 +28,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 60m
-  path: ./infrastructure/controllers/local
+  path: ./infrastructure/controllers/base
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-vars
   prune: true
   retryInterval: 2m
   sourceRef:

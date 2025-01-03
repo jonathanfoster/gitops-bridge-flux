@@ -24,3 +24,6 @@ spec:
   driftDetection:
     mode: enabled
   interval: 10m
+  values:
+    args:
+      - --kubelet-insecure-tls

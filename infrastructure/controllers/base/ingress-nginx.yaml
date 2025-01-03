@@ -24,3 +24,7 @@ spec:
   driftDetection:
     mode: enabled
   interval: 10m
+  values:
+    controller:
+      service:
+        type: ${INGRESS_NGINX_CONTROLLER_SERVICE_TYPE}
