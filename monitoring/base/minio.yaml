@@ -24,6 +24,7 @@ spec:
   driftDetection:
     mode: enabled
   interval: 10m
+  timeout: 3m
   values:
     buckets:
       - name: loki-admin
