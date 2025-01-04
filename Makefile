@@ -40,6 +40,7 @@ help: ## Display this help
 
 .PHONY: install-toolchain
 install-toolchain: ## Install toolchain
+	brew install age
 	brew install fluxcd/tap/flux
 	brew install helm
 	brew install kind
@@ -47,6 +48,7 @@ install-toolchain: ## Install toolchain
 	brew install kustomize
 	brew tap nats-io/nats-tools
 	brew install nats-io/nats-tools/nats
+	brew install sops
 	brew install yamllint
 	brew install yq
 
