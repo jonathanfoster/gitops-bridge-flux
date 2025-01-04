@@ -31,6 +31,10 @@ spec:
       tempo:
         host: http://tempo-gateway.monitoring.svc.cluster.local
         authMode: none
+    logs:
+      pod_logs:
+        labels:
+          app: app
     opencost:
       opencost:
         prometheus:
