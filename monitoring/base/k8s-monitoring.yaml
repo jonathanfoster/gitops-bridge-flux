@@ -36,10 +36,4 @@ spec:
         labels:
           app: app
     opencost:
-      opencost:
-        prometheus:
-          existingSecretName: null
-          username_key: null
-          password_key: null
-          external:
-            url: http://mimir-gateway.monitoring.svc.cluster.local/prometheus
+      enabled: false
