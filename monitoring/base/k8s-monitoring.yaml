@@ -35,5 +35,12 @@ spec:
       pod_logs:
         labels:
           app: app
+    metrics:
+      autoDiscover:
+        annotations:
+          metricsPath: prometheus.io/path
+          metricsPortNumber: prometheus.io/port
+          metricsScheme: prometheus.io/scheme
+          scrape: prometheus.io/scrape
     opencost:
       enabled: false
