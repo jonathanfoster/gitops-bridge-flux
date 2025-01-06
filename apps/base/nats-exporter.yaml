@@ -24,3 +24,8 @@ spec:
   driftDetection:
     mode: enabled
   interval: 10m
+  values:
+    config:
+      nats:
+        service: nats
+        port: 4222
