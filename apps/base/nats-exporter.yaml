@@ -27,5 +27,4 @@ spec:
   values:
     config:
       nats:
-        service: nats
-        port: 4222
+        service: nats-headless
