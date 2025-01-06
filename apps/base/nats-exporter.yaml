@@ -25,6 +25,9 @@ spec:
     mode: enabled
   interval: 10m
   values:
+    annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '7777'
     config:
       nats:
         service: nats-headless
